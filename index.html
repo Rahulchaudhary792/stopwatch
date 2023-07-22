@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset = "UTF-8">
+       <meta name = "Description" content = "MyDescription">
+       <meta name = "Author" content = "Id, Phonenumber">
+       <meta name = "Keywords" content = "HTML, CSS, BOOTSTRAP, JAVASCRIPT TUTORIALS">
+       <meta name = "Viewport" content = "width=device-width, initial-scale=1.0">
+       <title>Stop watch</title>
+       <style>
+          .header-style {
+            color: white;
+            font-family: Arial;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .header-style1 {
+              color: gray;
+              font-family: Arial;
+              /*width: 150px;
+              height: 150px;*/
+              /*border: 5px solid white;
+              border-radius: 100%;
+              padding: 100px 80px;
+              box-shadow: 3px 3px 70px white;*/
+              margin-top: 100px;
+              position: relative;
+              top: 97px;
+              
+            }
+            .div1 {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+          }
+          .div2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            display: grid;
+            grid-template-columns: 100px 100px;
+            margin-top: 150px;
+            column-gap: 10px;
+          }
+          .button-style1 {
+            color: white;
+            background-color: green;
+            font-family: Arial;
+            border: none;
+            padding: 7px;
+            box-shadow: 7px 7px 50px green;
+            position: relative;
+            top: 170px;
+          }
+          .button-style2 {
+            color: white;
+            background-color: blue;
+            font-family: Arial;
+            border: none;
+            padding: 7px;
+            box-shadow: 7px 7px 50px blue;
+            position: relative;
+            top: 170px;
+          }
+          .div3 {
+            border: 5px solid white;
+            border-radius: 100%;
+            padding: 100px 50px;
+            width: 100px;
+            height: 0px;
+            box-shadow: 3px 3px 70px white;
+            margin-top: 87px;
+            position: relative;
+          }
+          .div4 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            bottom: 420px;
+            margin-top: 100px;
+          }
+          body {
+            background-color: black;
+            overflow: hidden;
+          }
+       </style>
+    </head>
+    <body>
+       <h1 class = "header-style">STOP WATCH</h1>
+       <div class = "div1">
+           <h1 class = "header-style1 js-header1">0:0</h1>
+        </div>
+        <div class = "div2">
+            <button class = "button-style1 js-button1">Reset</button>
+            <button class = "button-style2 js-button2 js-button3">Start</button>
+        </div>
+        <div class = "div4">
+          <div class = "div3">
+            
+          </div>
+        </div>
+        <script>
+          let s = 0;
+          let m = 0;
+          let intervalId;
+          document.querySelector('.js-button1').addEventListener('click', () => {
+            let header1 = document.querySelector('.js-header1');
+            m = 0;
+            s = 0;
+            header1.innerHTML = `${m}:${s}`;
+          })
+          document.querySelector('.js-button2').addEventListener('click', () => {
+            let header1 = document.querySelector('.js-header1');
+            let button3 = document.querySelector('.js-button3');
+            if (button3.innerHTML == 'Start') {
+              intervalId = setInterval(() => {
+                s = s + 1;
+                if (s == 60) {
+                  s = 0;
+                  m = m + 1;
+                }
+                header1.innerHTML = `${m}:${s}`;
+                button3.innerHTML = 'Stop';
+              },1000)
+            }
+            else if (button3.innerHTML == 'Stop') {
+                clearInterval(intervalId);
+                button3.innerHTML = 'Start';
+            }
+          })
+       </script>
+    </body>
+</html>
